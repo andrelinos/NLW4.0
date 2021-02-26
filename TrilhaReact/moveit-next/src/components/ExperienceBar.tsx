@@ -1,18 +1,23 @@
 import styles from '../styles/components/ExperienceBar.module.css';
 import { ImStarEmpty, ImStarFull, ImStarHalf } from 'react-icons/im';
-import { CgGym } from 'react-icons/cg';
 
+import { useContext } from 'react';
+import { ChallengesContext } from '../context/ChallengesContext';
 
 export function ExperienceBar(){
+    const { currentExperience, experienceToNextLevel } = useContext(ChallengesContext);
+
+    const percentToNextLevel = Math.round(currentExperience * 100) / experienceToNextLevel;
+
     return(
         <header className={styles.experienceBar}>
             <span>0 <ImStarEmpty /></span>
             <div>
                 
-                <div style={{ width: '50%'}} />
-                <span className={styles.currentExperience} style={{ left: '50%' }}>300 <ImStarHalf /></span>
+                <div style={{ width: `${percentToNextLevel}%`}} />
+                <span className={styles.currentExperience} style={{ left: `${percentToNextLevel}%` }}> {currentExperience} <ImStarHalf /></span>
             </div>
-            <span>600 <ImStarFull /></span>
+            <span>{experienceToNextLevel} <ImStarFull /></span>
 
         </header>
     )
