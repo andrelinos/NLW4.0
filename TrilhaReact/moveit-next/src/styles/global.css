@@ -1,7 +1,7 @@
 *{
   margin: 0;
   padding: 0;
-  outline: 0;
+  outline-color: var(--background);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
